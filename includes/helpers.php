@@ -69,7 +69,7 @@ endif;
 	 */
 	function get_product_in_select($type = 'product') {
 
-		$productID = !empty($_POST['product_id']) ? esc_attr(wp_unslash($_POST['product_id'])) : null;
+		// $productID = !empty($_POST['product_id']) ? esc_attr(wp_unslash($_POST['product_id'])) : null;
 
 		$saved_items = get_proudct_item( $type );
 		echo '<select id="pstep-products" class="pstep-product-list" name="product_id">';
@@ -85,3 +85,72 @@ endif;
 		echo '<select class="product-list">';
 		
 	}
+
+
+	     /**
+     * Insert a new customer Details to database table
+     * 
+     * @param array $args
+     * 
+     * @return int|WP_Error
+     */
+    function insert_customer_details( $args = [] ) {
+
+        global $wpdb;
+
+        if ( empty ( $args['name']) ){
+            return new \WP_Error('NO - Name', __( 'You must be provide a Name', 'perdays-addon') );
+        }
+
+        if ( empty ( $args['phone']) ){
+            return new \WP_Error('NO - Phone', __( 'You must be provide a Phone', 'perdays-addon') );
+        }
+
+        if ( empty ( $args['email']) ){
+            return new \WP_Error('NO - Email', __( 'You must be provide a Email', 'perdays-addon') );
+        }
+
+        if ( empty ( $args['address']) ){
+            return new \WP_Error('NO - Address', __( 'You must be provide a Address', 'perdays-addon') );
+        }
+
+        // if ( empty ( $args['product_id']) ){
+        //     return new \WP_Error('NO - Product', __( 'Please Select Some Products', 'perdays-addon') );
+        // }
+
+        if ( empty ( $args['summery_of_order']) ){
+            return new \WP_Error('NO - Summery', __( 'You must be provide a Summery of Order', 'perdays-addon') );
+        }
+    
+    $defaults = [
+            // 'user_id' => get_current_user_id(),
+            'name' => '',
+            'phone' => '',
+            'email' => '',
+            'address' => '',
+            // 'product_id' => int(null),
+            'summery_of_order' => ''
+        ];
+    
+        $data = wp_parse_args( $args, $defaults );
+    
+        $inserted = $wpdb->insert(
+            $wpdb->prefix . 'pdy_customer_detls',
+            $data,
+            [
+                '%s', // name
+                '%s', // phone
+                '%s', // email
+                '%s', // address
+                '%s', // summery_of_order
+            ]
+        );
+
+	
+    
+        if ( ! $inserted ) {
+            return new \WP_Error( 'failed-to-insert', __( 'Faild to insert data test' , '' ) );
+        }
+    
+        return $wpdb->insert_id;
+    }

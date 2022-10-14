@@ -205,12 +205,12 @@ final class PerDays_Addon {
 
         $schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}pdy_customer_detls` (
           `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-          `user_id` bigint(20) unsigned NOT NULL,
+   
           `name` varchar(100) NOT NULL DEFAULT '',
           `phone` varchar(30) DEFAULT NULL,
           `email` varchar(30) DEFAULT NULL,
           `address` varchar(255) DEFAULT NULL,
-          `product_id` bigint(33) DEFAULT NULL,
+      
           `summery_of_order` varchar(255) DEFAULT NULL,
           PRIMARY KEY (`id`)
         ) $charset_collate";
