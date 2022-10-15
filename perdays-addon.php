@@ -210,7 +210,7 @@ final class PerDays_Addon {
           `phone` varchar(30) DEFAULT NULL,
           `email` varchar(30) DEFAULT NULL,
           `address` varchar(255) DEFAULT NULL,
-          `prd_id` int(20) DEFAULT NULL,
+          `prd_id` varchar(30) DEFAULT NULL,
           `summery_of_order` varchar(255) DEFAULT NULL,
           PRIMARY KEY (`id`)
         ) $charset_collate";

@@ -66,17 +66,16 @@ if ( is_user_logged_in() ) {
             <div class="">
                 <div class="input-div">
                      
-                <select id="pstep-products" class="pstep-product-list" name="prd_id">
-                    <option value="0"><?php echo _e('Select Product', 'perdays-addon' ) ;?></option>
-                        <?php
-                            if ( count( $saved_items ) ) :
-                                foreach ( $saved_items as $item ) : ?>
-                                    <option value="<?php echo esc_attr($item['id']) ;?>"><?php echo esc_html($item['name']) ;?></option>
-                               <?php  endforeach;
-                            else :
-                                echo $options = __( 'No section template is added.', 'exclusive-addons-elementor' );
-                            endif; 
-                        ?>
+                <select id="pstep-products" class="pstep-product-list" name="prd_id[]" multiple="multiple">
+                    <?php
+                        if ( count( $saved_items ) ) :
+                            foreach ( $saved_items as $item ) : ?>
+                                <option value="<?php echo esc_attr($item['id']) ;?>"><?php echo esc_html($item['name']) ;?></option>
+                            <?php  endforeach;
+                        else :
+                            echo $options = __( 'No section template is added.', 'exclusive-addons-elementor' );
+                        endif; 
+                    ?>
                 </select>
 		
                 

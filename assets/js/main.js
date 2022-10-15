@@ -1,9 +1,9 @@
 (function ($) {
     "use strict";
 
-    // $('.pstep-product-list').select2({
-    //     placeholder: 'Select an option'
-    // });
+    $('.pstep-product-list').select2({
+        placeholder: 'Select an option'
+    });
 
 
     // //jQuery time

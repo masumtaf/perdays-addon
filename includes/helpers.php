@@ -143,7 +143,7 @@ endif;
                 '%s', // phone
                 '%s', // email
                 '%s', // address
-                '%d', // product id
+                '%s', // product id
                 '%s', // summery_of_order
             ]
         );

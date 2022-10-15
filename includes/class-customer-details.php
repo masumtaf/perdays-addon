@@ -61,7 +61,25 @@ class PerDays_Customer_details_Form{
         $phone = isset( $_POST['phone'] ) ? sanitize_text_field( $_POST['phone'] ) : '';
         $email = isset( $_POST['email'] ) ? sanitize_text_field( $_POST['email'] ) : '';
         $address = isset( $_POST['address'] ) ? sanitize_textarea_field( $_POST['address'] ) : '';
-        $productID = isset( $_POST['prd_id'] ) ? sanitize_textarea_field( $_POST['prd_id'] ) : '';
+
+        // $prdIDs = isset( $_POST['prd_id'] );
+
+        $prep = [];
+        $idSoter = '';
+        if (!empty($_POST['prd_id'] )){
+            foreach ( $_POST['prd_id'] as $prdID ) {
+                $prep[] = $prdID;
+                // print_r($prep);
+                $idSoter = implode(" ,", $prep);
+            }
+        }
+     
+        // echo $idSoter;
+        print_r($idSoter);
+     
+       
+
+
         $summeryOfOrder = isset( $_POST['summery_of_order'] ) ? sanitize_textarea_field( $_POST['summery_of_order'] ) : '';
        
         // $CurrentUserId= get_current_user_id();
@@ -81,9 +99,9 @@ class PerDays_Customer_details_Form{
             $this->errors['address'] = __( 'Please provide a address address' , 'perdays-addon' );
         }  
         
-        if ( empty( $productID ) ){
-            $this->errors['prd_id'] = __( 'Please Select Some Products' , 'perdays-addon' );
-        }
+        // if ( empty( $productID ) ){
+        //     $this->errors['prd_id'] = __( 'Please Select Some Products' , 'perdays-addon' );
+        // }
         
         if ( empty( $summeryOfOrder ) ){
             $this->errors['summery_of_order'] = __( 'Please provide a Summery Of Order' , 'perdays-addon' );
@@ -99,7 +117,7 @@ class PerDays_Customer_details_Form{
             'phone' => $phone,
             'email' => $email,
             'address' => $address,
-            'prd_id' => $productID,
+            'prd_id' => $idSoter,
             'summery_of_order' => $summeryOfOrder
         ]);
 
