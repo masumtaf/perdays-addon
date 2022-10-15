@@ -37,19 +37,19 @@ if ( is_user_logged_in() ) {
             <div class="input-text">
                 <div class="input-div">
                     <label for="name"><?php _e( 'Name', 'perdays-addon' ); ?></label>
-                    <input type="text" name="name" id="name" class="regular-text" value=""  >
+                    <input type="text" name="name" id="name" class="regular-text" value="" >
                 </div>
             </div>
             <div class="input-text">
                 <div class="input-div">
                     <label for="phone"><?php _e( 'Phone', 'perdays-addon' ); ?></label>
-                    <input type="text" name="phone" id="phone" class="regular-text" value=""  >
+                    <input type="text" name="phone" id="phone" class="regular-text" value="" >
                 </div>
             </div>
             <div class="input-text">
                 <div class="input-div">
                     <label for="email"><?php _e( 'E-mail', 'perdays-addon' ); ?></label>
-                    <input type="email" name="email" id="email" class="regular-text" value=""  >
+                    <input type="email" name="email" id="email" class="regular-text" value="" >
                 </div>
             </div>
 
@@ -78,7 +78,8 @@ if ( is_user_logged_in() ) {
             <div class="buttons button_space">
                 <!-- <button class="back_button">Back</button> -->
                 <?php wp_nonce_field( 'perdays-customer-details' ) ;?>
-                <?php submit_button( __('Add Details', 'perdays-addon' ), 'primary', 'perdays_submit_customer_details' ) ?>
+                <?php //submit_button( __('Add Details', 'perdays-addon' ), 'primary', 'perdays_submit_customer_details' ) ?>
+                <input type="submit" id="perdays_submit_customer_details" name="perdays_submit_customer_details" class="submit primary" value="Submit"/>
             </div>
 
     </form>
