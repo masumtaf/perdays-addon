@@ -2,6 +2,8 @@
 
 $current_user = wp_get_current_user();
 
+$saved_items = get_proudct_item( $type = 'product' );
+
 // print_r($current_user);
 
 if ( !empty( $current_user->display_name ) ){
@@ -63,7 +65,21 @@ if ( is_user_logged_in() ) {
 
             <div class="">
                 <div class="input-div">
-                    <?php// get_product_in_select('product') ;?>
+                     
+                <select id="pstep-products" class="pstep-product-list" name="prd_id">
+                    <option value="0"><?php echo _e('Select Product', 'perdays-addon' ) ;?></option>
+                        <?php
+                            if ( count( $saved_items ) ) :
+                                foreach ( $saved_items as $item ) : ?>
+                                    <option value="<?php echo esc_attr($item['id']) ;?>"><?php echo esc_html($item['name']) ;?></option>
+                               <?php  endforeach;
+                            else :
+                                echo $options = __( 'No section template is added.', 'exclusive-addons-elementor' );
+                            endif; 
+                        ?>
+                </select>
+		
+                
                 </div>
             
             </div>

@@ -176,8 +176,8 @@ final class PerDays_Addon {
         wp_enqueue_style( 'select2-style', PEDN_ASSETS_URL . 'css/select2.min.css' );
         wp_enqueue_style( 'pedn-main-style', PEDN_ASSETS_URL . 'css/main-style.css' );
 	
-		// wp_enqueue_script( 'select2-js', PEDN_ASSETS_URL . 'js/select2.full.min.js', array(), PEDN_VER, true );
-		// wp_enqueue_script( 'pedn-main-js', PEDN_ASSETS_URL . 'js/main.js', array(), PEDN_VER, true );
+		wp_enqueue_script( 'select2-js', PEDN_ASSETS_URL . 'js/select2.full.min.js', array(), PEDN_VER, true );
+		wp_enqueue_script( 'pedn-main-js', PEDN_ASSETS_URL . 'js/main.js', array(), PEDN_VER, true );
 	
     }
 
@@ -205,12 +205,12 @@ final class PerDays_Addon {
 
         $schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}pdy_customer_detls` (
           `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-   
+          `created_by` int(20),
           `name` varchar(100) NOT NULL DEFAULT '',
           `phone` varchar(30) DEFAULT NULL,
           `email` varchar(30) DEFAULT NULL,
           `address` varchar(255) DEFAULT NULL,
-      
+          `prd_id` int(20) DEFAULT NULL,
           `summery_of_order` varchar(255) DEFAULT NULL,
           PRIMARY KEY (`id`)
         ) $charset_collate";

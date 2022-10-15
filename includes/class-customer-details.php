@@ -53,15 +53,15 @@ class PerDays_Customer_details_Form{
             wp_die( 'Are you try to Cheat ?' );
         }
 
-        // if ( !is_user_logged_in() ){
-        //     wp_die( 'Please login before add your information.' );
-        // }
+        if ( !is_user_logged_in() ){
+            wp_die( 'Please login before add your information.' );
+        }
 
         $name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
         $phone = isset( $_POST['phone'] ) ? sanitize_text_field( $_POST['phone'] ) : '';
         $email = isset( $_POST['email'] ) ? sanitize_text_field( $_POST['email'] ) : '';
         $address = isset( $_POST['address'] ) ? sanitize_textarea_field( $_POST['address'] ) : '';
-        // $productID = isset( $_POST['product_id'] ) ? sanitize_textarea_field( $_POST['product_id'] ) : '';
+        $productID = isset( $_POST['prd_id'] ) ? sanitize_textarea_field( $_POST['prd_id'] ) : '';
         $summeryOfOrder = isset( $_POST['summery_of_order'] ) ? sanitize_textarea_field( $_POST['summery_of_order'] ) : '';
        
         // $CurrentUserId= get_current_user_id();
@@ -81,9 +81,9 @@ class PerDays_Customer_details_Form{
             $this->errors['address'] = __( 'Please provide a address address' , 'perdays-addon' );
         }  
         
-        // if ( empty( $productID ) ){
-        //     $this->errors['product_id'] = __( 'Please Select Some Products' , 'perdays-addon' );
-        // }
+        if ( empty( $productID ) ){
+            $this->errors['prd_id'] = __( 'Please Select Some Products' , 'perdays-addon' );
+        }
         
         if ( empty( $summeryOfOrder ) ){
             $this->errors['summery_of_order'] = __( 'Please provide a Summery Of Order' , 'perdays-addon' );
@@ -99,7 +99,7 @@ class PerDays_Customer_details_Form{
             'phone' => $phone,
             'email' => $email,
             'address' => $address,
-            // 'product_id' => $productID,
+            'prd_id' => $productID,
             'summery_of_order' => $summeryOfOrder
         ]);
 
@@ -107,7 +107,7 @@ class PerDays_Customer_details_Form{
         if ( is_wp_error( $inserted_id ) ) {
             wp_die( $inserted_id->get_error_massage() );
         }
-        wp_redirect( get_permalink() );
+        wp_redirect( home_url() );
 
         exit;
 

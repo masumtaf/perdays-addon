@@ -114,21 +114,21 @@ endif;
             return new \WP_Error('NO - Address', __( 'You must be provide a Address', 'perdays-addon') );
         }
 
-        // if ( empty ( $args['product_id']) ){
-        //     return new \WP_Error('NO - Product', __( 'Please Select Some Products', 'perdays-addon') );
-        // }
+        if ( empty ( $args['prd_id']) ){
+            return new \WP_Error('NO - Product', __( 'Please Select Some Products', 'perdays-addon') );
+        }
 
         if ( empty ( $args['summery_of_order']) ){
             return new \WP_Error('NO - Summery', __( 'You must be provide a Summery of Order', 'perdays-addon') );
         }
     
     $defaults = [
-            // 'user_id' => get_current_user_id(),
+            'created_by' => get_current_user_id(),
             'name' => '',
             'phone' => '',
             'email' => '',
             'address' => '',
-            // 'product_id' => int(null),
+            'prd_id' => null,
             'summery_of_order' => ''
         ];
     
@@ -138,10 +138,12 @@ endif;
             $wpdb->prefix . 'pdy_customer_detls',
             $data,
             [
+                '%d', // id
                 '%s', // name
                 '%s', // phone
                 '%s', // email
                 '%s', // address
+                '%d', // product id
                 '%s', // summery_of_order
             ]
         );
