@@ -4,7 +4,6 @@ $current_user = wp_get_current_user();
 
 $saved_items = get_proudct_item( $type = 'product' );
 
-// print_r($current_user);
 
 if ( !empty( $current_user->display_name ) ){
     $placeholderName = $current_user->display_name;

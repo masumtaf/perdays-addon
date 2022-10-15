@@ -27,7 +27,7 @@ class PerDays_Customer_details_Form{
         ob_start();
      
 
-        include perdays_get_template('/tmpl-default-form.php');
+        include perdays_get_template('/tmpl-customer-details-final.php');
      
         $content = ob_get_contents();
         ob_end_clean();
@@ -69,16 +69,10 @@ class PerDays_Customer_details_Form{
         if (!empty($_POST['prd_id'] )){
             foreach ( $_POST['prd_id'] as $prdID ) {
                 $prep[] = $prdID;
-                // print_r($prep);
+          
                 $idSoter = implode(" ,", $prep);
             }
         }
-     
-        // echo $idSoter;
-        print_r($idSoter);
-     
-       
-
 
         $summeryOfOrder = isset( $_POST['summery_of_order'] ) ? sanitize_textarea_field( $_POST['summery_of_order'] ) : '';
        
@@ -125,6 +119,11 @@ class PerDays_Customer_details_Form{
         if ( is_wp_error( $inserted_id ) ) {
             wp_die( $inserted_id->get_error_massage() );
         }
+
+        // home_url()
+
+        $redirect_to = get_permalink();
+    
         wp_redirect( home_url() );
 
         exit;

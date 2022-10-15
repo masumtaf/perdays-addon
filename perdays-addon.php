@@ -173,9 +173,12 @@ final class PerDays_Addon {
 
     public function enqueue_scripts() {
 
+        // wp_enqueue_style( 'bootstrap-css', PEDN_ASSETS_URL . 'css/bootstrap.css' );
         wp_enqueue_style( 'select2-style', PEDN_ASSETS_URL . 'css/select2.min.css' );
         wp_enqueue_style( 'pedn-main-style', PEDN_ASSETS_URL . 'css/main-style.css' );
 	
+		// wp_enqueue_script( 'bootstrap-js', PEDN_ASSETS_URL . 'js/bootstrap.min.js', array(), PEDN_VER, true );
+		// wp_enqueue_script( 'jquery.easing', PEDN_ASSETS_URL . 'js/jquery.easing.min.js', array(), PEDN_VER, true );
 		wp_enqueue_script( 'select2-js', PEDN_ASSETS_URL . 'js/select2.full.min.js', array(), PEDN_VER, true );
 		wp_enqueue_script( 'pedn-main-js', PEDN_ASSETS_URL . 'js/main.js', array(), PEDN_VER, true );
 	
