@@ -14,11 +14,7 @@ class PerDays_Customer_details_Form{
        
         add_shortcode( 'per-cstm-details', [ $this, 'render_shortcode' ] );
         add_action( 'init', [ $this, 'form_handler' ] );
-        // $this->form_handler();
 
-
-        // add [per-cstm-details]
-      
     }
 
  
@@ -27,7 +23,7 @@ class PerDays_Customer_details_Form{
         ob_start();
      
 
-        include perdays_get_template('/tmpl-customer-details-final.php');
+        include perdays_get_template('/tmpl-customer-details.php');
      
         $content = ob_get_contents();
         ob_end_clean();

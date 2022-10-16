@@ -148,8 +148,6 @@ endif;
             ]
         );
 
-	
-    
         if ( ! $inserted ) {
             return new \WP_Error( 'failed-to-insert', __( 'Faild to insert data test' , '' ) );
         }

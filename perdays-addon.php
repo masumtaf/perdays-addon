@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: PerDays Addon
- * Description: A Mulistep Form Plugin
+ * Description: A Mulistep Form Plugin use this as shortcode [per-cstm-details]
  * Plugin URI: https://abdullah.co
  * Author: Abdullah
  * Author URI: https://gitlab.com/masumtaf/
@@ -140,21 +140,8 @@ final class PerDays_Addon {
 
         $this->includes();
 
-        // new Antares_Addon\includes\Assets_Manager();
-        // new Antares_Addon\includes\Custom_PostTypes();
-        // new Antares_Addon\includes\Metaboxes();
-        // // new Antares\Utility();
-        // // new Antares\Frontend\Shortcodes();
-
-        // new Antares_Addon\Includes\Antares_Widgets_Controls();
-
-        // if (is_admin()) {
-        //     new Antares\Admin();
-        // }
-
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 
-       
         new PerDays_Addon\Includes\PerDays_Customer_details_Form();
     }
 
@@ -166,19 +153,15 @@ final class PerDays_Addon {
     public function includes() {
 
         include_once PEDN_INCLUDES . '/helpers.php';
-        include_once PEDN_INCLUDES . '/shortcode-functions.php';
         include_once PEDN_INCLUDES . '/class-customer-details.php';
 
     }
 
     public function enqueue_scripts() {
 
-        // wp_enqueue_style( 'bootstrap-css', PEDN_ASSETS_URL . 'css/bootstrap.css' );
         wp_enqueue_style( 'select2-style', PEDN_ASSETS_URL . 'css/select2.min.css' );
         wp_enqueue_style( 'pedn-main-style', PEDN_ASSETS_URL . 'css/main-style.css' );
-	
-		// wp_enqueue_script( 'bootstrap-js', PEDN_ASSETS_URL . 'js/bootstrap.min.js', array(), PEDN_VER, true );
-		// wp_enqueue_script( 'jquery.easing', PEDN_ASSETS_URL . 'js/jquery.easing.min.js', array(), PEDN_VER, true );
+
 		wp_enqueue_script( 'select2-js', PEDN_ASSETS_URL . 'js/select2.full.min.js', array(), PEDN_VER, true );
 		wp_enqueue_script( 'pedn-main-js', PEDN_ASSETS_URL . 'js/main.js', array(), PEDN_VER, true );
 	
